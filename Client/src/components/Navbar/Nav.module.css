@@ -1,10 +1,11 @@
 .container {
-    background-color: rgb(135, 91, 135);
+    background-color: rgb(20 19 20);
     display: flex;
     gap: 20px;
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    margin-top: -20px;
   }
   
   .container a {
@@ -23,3 +24,9 @@
   .btn{
     background-color: #ab527c
   }
+
+  .imagen{
+    width: 220px;
+    height: 110px;
+    margin-top: 0px;
+}
