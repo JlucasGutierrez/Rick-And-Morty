@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import style from "./Card.module.css";
 import { Link } from "react-router-dom";
 import { addFavorite, deleteFavorite } from "../../../redux/actions/actions";
+import { FcLike,FcDislike } from "react-icons/fc";
+import { CgClose } from "react-icons/cg";
 
 
 export default function Card({
@@ -54,26 +56,43 @@ export default function Card({
   }, [favorites]);
 
   return (
-    <div className={style.cardContainer}>
+    <div className={style.card}>
       {onClose ? (
-        <button className={style.closeButton} onClick={() => onClose(id)}>
-          X
-        </button>
-      ) : null}
-      <h2 className={style.cardInfo}>{name}</h2>
-      <h2 className={style.cardInfo}>{species}</h2>
-      <h2 className={style.cardInfo}>{gender}</h2>
-      <h2 className={style.cardInfo}>{status}</h2>
-      <h2 className={style.cardInfo}>{origin}</h2>
-      <Link to={`/detail/${id}`}>
+         <button className={style.closeButton} onClick={() => onClose(id)}><CgClose className={style.close}/></button>
+       ) : null}
+      <div>
+        <Link to={`/detail/${id}`}>
         <img className={style.cardImage} src={image} alt={name} />
-      </Link>
+        </Link>
+      </div>
+      <div><h4>{name}</h4></div>
+      <div><h5>{species}</h5></div>
       {isFav ? (
-        <button onClick={handleClick}>❤️</button>
+      <button className={style.fav} onClick={handleClick}><FcDislike /></button>
       ) : (
-        <button onClick={handleClick}>🤍</button>
+      <button className={style.fav} onClick={handleClick}><FcLike /></button>
       )}
     </div>
+    // <div className={style.cardContainer}>
+    //   {onClose ? (
+    //     <button className={style.closeButton} onClick={() => onClose(id)}>
+    //       X
+    //     </button>
+    //   ) : null}
+    //   <h2 className={style.cardInfo}>{name}</h2>
+    //   <h2 className={style.cardInfo}>{species}</h2>
+    //   <h2 className={style.cardInfo}>{gender}</h2>
+    //   <h2 className={style.cardInfo}>{status}</h2>
+    //   <h2 className={style.cardInfo}>{origin}</h2>
+    //   <Link to={`/detail/${id}`}>
+    //     <img className={style.cardImage} src={image} alt={name} />
+    //   </Link>
+    //   {isFav ? (
+    //     <button onClick={handleClick}>❤️</button>
+    //   ) : (
+    //     <button onClick={handleClick}>🤍</button>
+    //   )}
+    // </div>
   );
 }
 

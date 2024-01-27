@@ -26,5 +26,5 @@ server.get("/health-check", (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log("Server raised in port: " + PORT);
+  console.log("Server raised in port: " + 3001);
 });
